@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="w3resource-social-preview.png" />
+    <title>JS Recursion Exercises</title>
+</head>
+<body>
+    <script>
+            document.write("<h1>JavaScript Recursion Eercises:-</h1><br>")
+document.write("1-) Write a JavaScript program to calculate the factorial of a number.  <br>In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n.<br> For example, 5! = 5 x 4 x 3 x 2 x 1 = 120<br>");
+document.write("show in console<br><br><br>");
+console.log("1-)------Program exercise-----------------");
+function factorial(x) 
+{ 
+
+  if (x === 0)
+ {
+    return 1;
+ }
+  return x * factorial(x-1);        
+}
+console.log(factorial(5));
+document.write("2-) Write a JavaScript program to find the greatest common divisor (GCD) of two positive numbers using recursion.  <br>");
+document.write("show in console<br><br><br>");
+console.log("2-)------Program exercise-----------------");
+var gcd = function(a, b) {
+    if ( ! b) {
+        return a;
+    }
+
+    return gcd(b, a % b);
+};
+console.log(gcd(2154, 458));
+document.write("3-) Write a JavaScript program to compute the sum of an array of integers.<br>Example : var array = [1, 2, 3, 4, 5, 6]<br>Expected Output : 21");
+document.write("show in console<br><br><br>");
+console.log("3-)------Program exercise-----------------");
+var array_sum = function(my_array) {
+  if (my_array.length === 1) {
+    return my_array[0];
+  }
+  else {
+    return my_array.pop() + array_sum(my_array);
+  }
+};
+
+console.log(array_sum([1,2,3,4,5,6]));
+document.write("4-)Write a JavaScript program to compute the sum of an array of integers.  <br>Example : var array = [1, 2, 3, 4, 5, 6]<br>Expected Output : 21<br>");
+document.write("show in console<br><br><br>");
+console.log("4-)------Program exercise-----------------");
+var array_sum = function(my_array) {
+  if (my_array.length === 1) {
+    return my_array[0];
+  }
+  else {
+    return my_array.pop() + array_sum(my_array);
+  }
+};
+
+console.log(array_sum([1,2,3,4,5,6]));
+document.write("5-)Write a JavaScript program to compute the exponent of a number.  <br>82 = 8 x 8 = 64. Here 8 is the base and 2 is the exponent.");
+document.write("show in console<br><br><br>");
+console.log("5-)------Program exercise-----------------");
+var exponent = function(a, n) 
+{
+   if (n === 0) 
+   {
+    return 1;
+    }
+  else 
+  {
+    return a * exponent(a, n-1);
+  }
+};
+
+console.log(exponent(4, 2));
+document.write("6-)Write a JavaScript program to get the first n Fibonacci numbers.  <br>");
+document.write("show in console<br><br><br>");
+console.log("6-)------Program exercise-----------------");
+var fibonacci_series = function (n) {
+  // Base case: if n is less than or equal to 1, return the base series [0, 1].
+  if (n <= 1) {
+    return [0, 1];
+  } else {
+    // Recursive case: generate the Fibonacci series up to (n - 1).
+    var s = fibonacci_series(n - 1);
+    // Calculate the next term in the series and push it to the array.
+    s.push(s[s.length - 1] + s[s.length - 2]);
+    // Return the updated Fibonacci series up to the specified length.
+    return s.slice(0, n);
+  }
+};
+// Example usage: Calculate and print the Fibonacci series up to the 8th term.
+console.log(fibonacci_series(8));
+document.write("7-) Write a JavaScript program to check whether a number is even or not <br> ");
+document.write("show in console<br><br><br>");
+console.log("7-)------Program exercise-----------------");
+function is_even_recursion(number)
+{
+  if (number < 0) 
+  {
+    number = Math.abs(number);
+  }
+  if (number===0) 
+  {
+    return true;
+  }
+  if (number===1) 
+  {
+    return false;
+  }
+  else 
+  {
+    number = number - 2;
+    return is_even_recursion(number);
+  }
+}
+console.log(is_even_recursion(234)); //true
+console.log(is_even_recursion(-45)); // false
+console.log(is_even_recursion(-45)); // false
+document.write("-)8Write a JavaScript program for binary search.  <br>Sample array : [0,1,2,3,4,5,6]<br>console.log(l.br_search(5)) will return '5' <br> ");
+document.write("show in console<br><br><br>");
+console.log("8-)------Program exercise-----------------");
+Array.prototype.br_search = function (target) 
+{
+  var half = parseInt(this.length / 2);
+  if (target === this[half]) 
+  {
+    return half;
+  }
+  if (target > this[half]) 
+  {
+    return half + this.slice(half,this.length).br_search(target);
+  } 
+  else
+  {
+    return this.slice(0, half).br_search(target);
+  }
+};
+
+l= [0,1,2,3,4,5,6];
+
+console.log(l.br_search(5));
+document.write("9-)Write a merge sort program in JavaScript.  <br>Sample array:[34,7,23,32,5,62]<br>Sample output:[5, 7, 23, 32, 34, 62] <br> ");
+document.write("show in console<br><br><br>");
+console.log("9-)------Program exercise-----------------");
+Array.prototype.merge_Sort = function () {
+  if (this.length <= 1) 
+  {
+    return this;
+  }
+
+  var half = parseInt(this.length / 2);
+  var left = this.slice(0, half).merge_Sort();
+  var right = this.slice(half,     this.length).merge_Sort();
+  var merge = function (left, right) 
+  {
+  var arry = [];
+  while (left.length > 0 && right.length > 0)
+  {
+    arry.push((left[0] <= right[0]) ? left.shift() : right.shift());
+  }
+    return arry.concat(left).concat(right);
+  };
+
+  return merge(left, right);
+};
+
+var a = [34,7,23,32,5,62];
+console.log(a.merge_Sort());
+document.write("10-) Write a JavaScript program to convert binary number (positive) to decimal number using recursion.<br> ");
+document.write("show in console<br><br><br>");
+console.log("10-)------Program exercise-----------------");
+const test = (n) => {
+  if (n === 0 || n === 1) 
+  {
+    return String(n)
+  }
+  return test(Math.floor(n / 2)) + String(n % 2)
+}
+console.log(test(1))
+console.log(test(0))
+console.log(test(10))
+console.log(test(101))
+document.write("11-)  Write a JavaScript program to check whether a given string is a palindrome or not using recursion. <br> Test Data:<br>(madam) -> true<br>(abdb) -> false<br>(ab) -> false<br> (test(a) -> true<br> ");
+document.write("show in console<br><br><br>");
+console.log("11-)------Program exercise-----------------");
+const tests = (text) => {
+  if (typeof text !== 'string') {
+        return 'String should not be empty!'
+  }
+
+  if (text.length <= 1) {
+    return true
+  }
+
+  if (text[0] !== text[text.length - 1])
+  {
+    return false
+  } 
+  else 
+  {
+    return tests(text.slice(1, text.length - 1))
+  }
+}
+console.log(tests("madam"))
+console.log(tests("abdb"))
+console.log(tests("ab"))
+console.log(tests("a"))
+document.write("12-)  Write a JavaScript program to search for a given integer in an array of sorted integers using the Binary Search Algorithm and recursion.<br> ");
+document.write("show in console<br><br><br>");
+console.log("12-)------Program exercise-----------------");
+const binary_Search = (arr, searchValue, low = 0, high = arr.length - 1) => {
+  // base case
+  if (high < low || arr.length === 0) return -1
+  const mid = low + Math.floor((high - low) / 2)
+  // If the element is present at the middle
+  if (arr[mid] === searchValue) {
+    return mid
+  }
+  // If element is smaller than mid, then
+  // it can only be present in left subarray
+  if (arr[mid] > searchValue) {
+    return binary_Search(arr, searchValue, low, mid - 1)
+  }
+  // Else the element can only be present in right subarray
+  return binary_Search(arr, searchValue, mid + 1, high)
+}
+ const myArray = [1, 2, 3, 5, 6, 7, 10, 11, 14, 15, 17, 19, 20, 22, 23];
+ console.log(binary_Search(myArray, 6));
+ console.log(binary_Search(myArray, 16));
+ document.write("13-) A string consists of digits ranging from 2 to 9, inclusive. Write a JavaScript program to get all possible letter combinations that represent the number using recursion.  ) <br> ");
+document.write("show in console<br><br><br>");
+console.log("13-)------Program exercise-----------------");
+const tes = (digits) => {
+  const length = digits?.length
+  const result = []
+  if (!length) {
+    return result
+  }
+  const digit_Map = {
+    1: 'abc',
+    2: 'def',
+    3: 'ghi',
+    4: 'jkl',
+    5: 'mno',
+    6: 'pqr',
+    7: 'stu',
+    8: 'vwx',
+    9: 'yz'
+  }
+
+  const letter_combinations = (index, combination) => {
+    let letter
+    let letterIndex
+    if (index >= length) {
+      result.push(combination)
+      return
+    }
+    const digit = digit_Map[digits[index]]
+    letterIndex = 0
+    while ((letter = digit[letterIndex++])) {
+      letter_combinations(index + 1, combination + letter)
+    }
+  }
+  letter_combinations(0, '')
+  return result
+}
+console.log(tes("12"))
+console.log(tes("9"))
+
+    </script>
+</body>
+</html>
